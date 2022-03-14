@@ -4,20 +4,22 @@
   --green-2: #255D57;
   --shadow-color: 173deg 48% 28%;
   --shadow-elevation-medium:
-    0px -1px 1.1px hsl(var(--shadow-color) / 0.26),
-    0px -2.8px 3.1px -0.9px hsl(var(--shadow-color) / 0.25),
-    0px -6.9px 7.6px -1.8px hsl(var(--shadow-color) / 0.24),
-    0px -16.8px 18.4px -2.7px hsl(var(--shadow-color) / 0.23);
+    0px -0.3px 0.4px hsl(var(--shadow-color) / 0.22),
+    0px -0.9px 1.1px -0.5px hsl(var(--shadow-color) / 0.24),
+    0px -1.7px 2px -1px hsl(var(--shadow-color) / 0.26),
+    0px -3.3px 3.9px -1.5px hsl(var(--shadow-color) / 0.28),
+    0px -6.2px 7.4px -2px hsl(var(--shadow-color) / 0.3);
   --shadow-elevation-high:
-    0px -1px 1.1px hsl(var(--shadow-color) / 0.22),
-    0px -3.7px 4.1px -0.3px hsl(var(--shadow-color) / 0.21),
-    0px -6.4px 7px -0.7px hsl(var(--shadow-color) / 0.21),
-    0px -10px 11px -1px hsl(var(--shadow-color) / 0.21),
-    0px -15.2px 16.6px -1.3px hsl(var(--shadow-color) / 0.2),
-    0px -22.8px 25px -1.7px hsl(var(--shadow-color) / 0.2),
-    0px -33.6px 36.8px -2px hsl(var(--shadow-color) / 0.19),
-    0px -48.4px 53px -2.4px hsl(var(--shadow-color) / 0.19),
-    0px -68px 74.5px -2.7px hsl(var(--shadow-color) / 0.19);
+    0px -0.3px 0.4px hsl(var(--shadow-color) / 0.21),
+    0px -1.7px 2px -0.2px hsl(var(--shadow-color) / 0.22),
+    0px -2.9px 3.5px -0.5px hsl(var(--shadow-color) / 0.23),
+    0px -4.4px 5.2px -0.7px hsl(var(--shadow-color) / 0.24),
+    0px -6.2px 7.4px -0.9px hsl(var(--shadow-color) / 0.25),
+    0.1px -8.8px 10.5px -1.1px hsl(var(--shadow-color) / 0.25),
+    0.1px -12.2px 14.5px -1.4px hsl(var(--shadow-color) / 0.26),
+    0.1px -16.8px 20px -1.6px hsl(var(--shadow-color) / 0.27),
+    0.2px -22.7px 27.1px -1.8px hsl(var(--shadow-color) / 0.28),
+    0.2px -30.4px 36.3px -2px hsl(var(--shadow-color) / 0.29);
 }
 /* ---- Base Rules ---- */
 body {
@@ -31,7 +33,7 @@ body {
 /* Typeography General*/
 h1 {
     font-family: 'Fira Sans', sans-serif;
-    font-size: 3em;
+    font-size: 4em;
     margin: 2em 1rem;
 }
 
@@ -85,6 +87,7 @@ section {
     display: flex;
     justify-content: center;
     background: #000;
+    font-size: 0.9em;
 }
 
 .navbar__menu li {
@@ -101,7 +104,7 @@ section {
 .navbar__menu .menu__link {
     display: block;
     padding: 1em;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
 }
 
@@ -113,7 +116,6 @@ section {
 
 /* Header Styles */
 .page__header {
-    background: #fff;
     position: fixed;
     top: 0;
     width: 100%;

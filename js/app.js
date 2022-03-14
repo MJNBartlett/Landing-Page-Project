@@ -14,41 +14,37 @@
 */
 
 /**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
-
-/**
  * Define Global Variables
 */
 let navList = document.getElementById('navbar__list'); //ul container for nav items
 let allSections = document.querySelectorAll('main section'); //Node list of all sections in main
-let allSectionsNum  = allSections.length; //length of section node list, used in nav build
 let allSectionTitles = document.querySelectorAll('main section h2'); //Node list of all section h2 titles in main
 /**
  * End Global Variables
+ *
  * Start Helper Functions
 */
 
 /**
  * End Helper Functions
+ *
  * Begin Main Functions
 */
 
-// build the nav, add click event listeners to links
+// build the nav, and add click event listeners to each link
 function navMenuBuilder() {
-    for (let i = 0; i <= allSectionsNum; i++) { //allSectionsNum defined in global variables
+    for (let section of allSections) {
       let listItems = document.createElement('li'); //Create li element
-      let sectionTitle = allSectionTitles[i]; //Variable to iterate through section title node list
+      let sectionTitle = section.querySelector('h2'); //Variable to store section h2 title element
       let sectionTitleText = sectionTitle.textContent; //Varible to store h2 title from each section
-      let sectionLink = allSections[i].getAttribute('id'); //Storing section ID for use in linking nav items
+      let sectionLink = section.getAttribute('id'); //Storing section ID for use in linking nav items
 
       listItems.className = `menu__link ${sectionLink}__anchor`; //adding styling class for nav items, and anchor class for future reference
       listItems.innerHTML = `<a href="#${sectionLink}">${sectionTitleText}</a>`; //adding link to page sections, and text from section h2 element
 
       listItems.addEventListener('click', function clickToScroll(evt) {
         evt.preventDefault(); //Stop page refresh when clicking each link
-        allSectionTitles[i].scrollIntoView({behavior: 'smooth'}); //scroll to section on click, smooth instead of snap
+        section.scrollIntoView({behavior: 'smooth'}); //scroll to section on click, smooth instead of snap
       })
 
       navList.appendChild(listItems); //append created li element to nav ul element
@@ -71,21 +67,18 @@ function activeSectionIndic(){
       }
     }
     document.addEventListener('scroll', activeSectionIndic);
-}
-
-// Scroll to anchor ID using scrollTO event
-
+};
 
 /**
  * End Main Functions
+ *
  * Begin Events
- * Adding DOMContentLoaded listeners to ensure code runs in correct order.
+ * Adding DOMContentLoaded listeners to each ensure code runs in correct order.
+ * Removal of listeners from functions below will prevent proper functionality.
 */
 
 // Build menu
-document.addEventListener('DOMContentLoaded', navMenuBuilder); //Run function to build nav
+document.addEventListener('DOMContentLoaded', navMenuBuilder);
 
 // Set sections as active
-document.addEventListener('DOMContentLoaded', activeSectionIndic); //Run function, add scroll event listener
-
-// Scroll to section on link click
+document.addEventListener('DOMContentLoaded', activeSectionIndic); //Adds scroll event listener
