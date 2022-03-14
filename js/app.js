@@ -30,17 +30,14 @@ let allSectionTitles = document.querySelectorAll('main section h2'); //Node list
  * Start Helper Functions
 */
 
-
-
 /**
  * End Helper Functions
  * Begin Main Functions
- *
 */
 
 // build the nav
 function navMenuBuilder() {
-    for (let i = 0; i <= allSectionsNum; i++) { //allSectionsNum in global variables
+    for (let i = 0; i <= allSectionsNum; i++) { //allSectionsNum defined in global variables
       let listItems = document.createElement('li'); //Create li element
       let sectionTitle = allSectionTitles[i]; //Variable to iterate through section title node list
       let sectionTitleText = sectionTitle.textContent; //Varible to store h2 title from each section
@@ -52,14 +49,26 @@ function navMenuBuilder() {
       listItems.addEventListener('click', function clickToScroll(evt) {
         evt.preventDefault(); //Stop page refresh when clicking each link
         allSectionTitles[i].scrollIntoView({behavior: 'smooth'}); //scroll to section on click, smooth instead of snap
-      });
+      })
 
       navList.appendChild(listItems); //append created li element to nav ul element
-    };
-  };
+    }
+};
 
 // Add class 'active' to section when near top of viewport
+function activeSectionIndic(){
+    for (let section of allSections){ //allSections Node list defined in global variables
+      let sectionBoundBox = section.getBoundingClientRect(); //returns DOMRect object determing each sections relative position to top of viewport
 
+      if (sectionBoundBox.top < 200 && sectionBoundBox.bottom > 220){ //top or bottom of section in px from top of viewport
+        section.classList.add("your-active-class"); //add styling class to active section in viewport
+      }
+      else {
+        section.classList.remove("your-active-class"); //remove styling class
+      }
+    }
+    document.addEventListener('scroll', activeSectionIndic);
+};
 
 // Scroll to anchor ID using scrollTO event
 
@@ -69,8 +78,10 @@ function navMenuBuilder() {
  * Begin Events
 */
 
-// Build menu
-navMenuBuilder() //run function to build nav
-// Scroll to section on link click
-
 // Set sections as active
+activeSectionIndic(); //Run function, add scroll event listener - Must run before navMenuBuilder() !!!
+
+// Build menu
+navMenuBuilder(); //Run function to build nav
+
+// Scroll to section on link click
