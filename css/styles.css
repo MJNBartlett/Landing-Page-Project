@@ -124,3 +124,8 @@ section.your-active-class {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
+.menu__link--active {
+    background: #444;
+    color: #fff;
+    transition: ease 0.3s all;
+}

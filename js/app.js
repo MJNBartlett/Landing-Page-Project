@@ -35,7 +35,7 @@ let allSectionTitles = document.querySelectorAll('main section h2'); //Node list
  * Begin Main Functions
 */
 
-// build the nav
+// build the nav, add click event listeners to links
 function navMenuBuilder() {
     for (let i = 0; i <= allSectionsNum; i++) { //allSectionsNum defined in global variables
       let listItems = document.createElement('li'); //Create li element
@@ -59,16 +59,19 @@ function navMenuBuilder() {
 function activeSectionIndic(){
     for (let section of allSections){ //allSections Node list defined in global variables
       let sectionBoundBox = section.getBoundingClientRect(); //returns DOMRect object determing each sections relative position to top of viewport
+      let sectionId = section.getAttribute('id');
+      let relNavLink = document.querySelector(`.${sectionId}__anchor`); // __anchor class added to nav items in navMenuBuilder()
 
-      if (sectionBoundBox.top < 200 && sectionBoundBox.bottom > 220){ //top or bottom of section in px from top of viewport
+      if (sectionBoundBox.top < 200 && sectionBoundBox.bottom > 220){ //top or bottom of section box in px from top of viewport
         section.classList.add("your-active-class"); //add styling class to active section in viewport
-      }
-      else {
+        relNavLink.classList.add("menu__link--active"); //add styling class to relative nav link in header nav
+      } else {
         section.classList.remove("your-active-class"); //remove styling class
+        relNavLink.classList.remove("menu__link--active"); //remove styling class
       }
     }
     document.addEventListener('scroll', activeSectionIndic);
-};
+}
 
 // Scroll to anchor ID using scrollTO event
 
@@ -76,12 +79,13 @@ function activeSectionIndic(){
 /**
  * End Main Functions
  * Begin Events
+ * Adding DOMContentLoaded listeners to ensure code runs in correct order.
 */
 
-// Set sections as active
-activeSectionIndic(); //Run function, add scroll event listener - Must run before navMenuBuilder() !!!
-
 // Build menu
-navMenuBuilder(); //Run function to build nav
+document.addEventListener('DOMContentLoaded', navMenuBuilder); //Run function to build nav
+
+// Set sections as active
+document.addEventListener('DOMContentLoaded', activeSectionIndic); //Run function, add scroll event listener
 
 // Scroll to section on link click
