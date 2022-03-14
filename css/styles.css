@@ -1,29 +1,29 @@
-
+/* ---- Base Rules ---- */
 :root {
   --green-1: #3C968B;
-  --green-2: #255D57;
+  --green-2: #1e4c47;
   --shadow-color: 173deg 48% 28%;
   --shadow-elevation-medium:
     0px -0.3px 0.4px hsl(var(--shadow-color) / 0.22),
     0px -0.9px 1.1px -0.5px hsl(var(--shadow-color) / 0.24),
     0px -1.7px 2px -1px hsl(var(--shadow-color) / 0.26),
     0px -3.3px 3.9px -1.5px hsl(var(--shadow-color) / 0.28),
-    0px -6.2px 7.4px -2px hsl(var(--shadow-color) / 0.3);
+    0px -6.2px 7.4px -2px hsl(var(--shadow-color) / 0.3),
+    0px -8.8px 10.5px -1.1px hsl(var(--shadow-color) / 0.25);
   --shadow-elevation-high:
     0px -0.3px 0.4px hsl(var(--shadow-color) / 0.21),
     0px -1.7px 2px -0.2px hsl(var(--shadow-color) / 0.22),
     0px -2.9px 3.5px -0.5px hsl(var(--shadow-color) / 0.23),
     0px -4.4px 5.2px -0.7px hsl(var(--shadow-color) / 0.24),
     0px -6.2px 7.4px -0.9px hsl(var(--shadow-color) / 0.25),
-    0.1px -8.8px 10.5px -1.1px hsl(var(--shadow-color) / 0.25),
-    0.1px -12.2px 14.5px -1.4px hsl(var(--shadow-color) / 0.26),
-    0.1px -16.8px 20px -1.6px hsl(var(--shadow-color) / 0.27),
-    0.2px -22.7px 27.1px -1.8px hsl(var(--shadow-color) / 0.28),
-    0.2px -30.4px 36.3px -2px hsl(var(--shadow-color) / 0.29);
+    0px -8.8px 10.5px -1.1px hsl(var(--shadow-color) / 0.25),
+    0px -12.2px 14.5px -1.4px hsl(var(--shadow-color) / 0.26),
+    0px -16.8px 20px -1.6px hsl(var(--shadow-color) / 0.27),
+    0px -22.7px 27.1px -1.8px hsl(var(--shadow-color) / 0.28);
 }
-/* ---- Base Rules ---- */
+
 body {
-    background: linear-gradient(#000 10%, var(--green-1) 100%);
+    background: linear-gradient(#000 10%, var(--green-1) 93%);
     margin: 0;
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -45,10 +45,19 @@ h1 {
 }
 
 h2 {
-    border-bottom: 1px solid var(--green-1);
     font-family: 'Oxygen', Sans-Serif;
     font-size: 3em;
     color: #fff;
+}
+
+h2::after{
+  content: '';
+  width: 100%;
+  height: 4px;
+  background: var(--green-1);
+  display:block;
+  border-radius: 20px;
+  margin-top: 25px;
 }
 
 p {
@@ -74,14 +83,14 @@ section {
     border-radius: 20px;
     box-shadow: var(--shadow-elevation-medium);
     margin: 20px 0px;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.30);
     transition: 0.3s ease;
 }
 
 /* ---- Module Rules ---- */
 /* Navigation Styles*/
 .navbar__menu ul {
-    padding-left: 0;
+    padding: 0;
     margin: 0;
     list-style: none;
     display: flex;
@@ -103,7 +112,7 @@ section {
 
 .navbar__menu .menu__link {
     display: block;
-    padding: 1em;
+    padding: 15px 10px;
     font-weight: 600;
     text-decoration: none;
 }
@@ -124,14 +133,13 @@ section {
 
 /* Footer Styles */
 .page__footer {
-    background: #000;
-    padding: 3em;
-    color: #fff;
+    background: var(--green-1);
+    padding: 2em;
     text-align: center;
 }
 
 .page__footer p{
-    color: #fff;
+  color: rgba(0,0,0,0.80);
 }
 
 .page__footer a{
@@ -162,7 +170,6 @@ section:nth-of-type(even) .landing__container {
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 section.your-active-class {
-    background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.65);
     box-shadow: var(--shadow-elevation-high);
     transition: 0.3s ease;
