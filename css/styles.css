@@ -1,10 +1,30 @@
 
+:root {
+  --green-1: #3C968B;
+  --green-2: #255D57;
+  --shadow-color: 173deg 48% 28%;
+  --shadow-elevation-medium:
+    0px -1px 1.1px hsl(var(--shadow-color) / 0.26),
+    0px -2.8px 3.1px -0.9px hsl(var(--shadow-color) / 0.25),
+    0px -6.9px 7.6px -1.8px hsl(var(--shadow-color) / 0.24),
+    0px -16.8px 18.4px -2.7px hsl(var(--shadow-color) / 0.23);
+  --shadow-elevation-high:
+    0px -1px 1.1px hsl(var(--shadow-color) / 0.22),
+    0px -3.7px 4.1px -0.3px hsl(var(--shadow-color) / 0.21),
+    0px -6.4px 7px -0.7px hsl(var(--shadow-color) / 0.21),
+    0px -10px 11px -1px hsl(var(--shadow-color) / 0.21),
+    0px -15.2px 16.6px -1.3px hsl(var(--shadow-color) / 0.2),
+    0px -22.8px 25px -1.7px hsl(var(--shadow-color) / 0.2),
+    0px -33.6px 36.8px -2px hsl(var(--shadow-color) / 0.19),
+    0px -48.4px 53px -2.4px hsl(var(--shadow-color) / 0.19),
+    0px -68px 74.5px -2.7px hsl(var(--shadow-color) / 0.19);
+}
 /* ---- Base Rules ---- */
 body {
-    background: rgb(136,203,171);
-    background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
+    background: linear-gradient(#000 10%, var(--green-1) 100%);
     margin: 0;
-    font-family: 'Merriweather', serif;
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     color: #fff;
 }
 
@@ -23,7 +43,7 @@ h1 {
 }
 
 h2 {
-    border-bottom: 1px solid #cc1;
+    border-bottom: 1px solid var(--green-1);
     font-family: 'Oxygen', Sans-Serif;
     font-size: 3em;
     color: #fff;
@@ -36,7 +56,9 @@ p {
 
 /* ---- Layout Rules ---- */
 main {
-    margin: 10vh 1em 10vh;
+    max-width: 1000px;
+    padding: 0px 20px;
+    margin: auto;
 }
 
 .main-hero {
@@ -46,20 +68,34 @@ main {
 
 section {
     position: relative;
-    min-height: 80vh;
+    min-height: 70vh;
+    border-radius: 20px;
+    box-shadow: var(--shadow-elevation-medium);
+    margin: 20px 0px;
+    background: rgba(0, 0, 0, 0.25);
+    transition: 0.3s ease;
 }
-
 
 /* ---- Module Rules ---- */
 /* Navigation Styles*/
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
-    text-align: right;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background: #000;
 }
 
 .navbar__menu li {
     display: inline-block;
+    border-radius: 10px;
+    margin: 5px 2.5px;
+}
+
+.navbar__menu a {
+    text-decoration: none;
+    color: #fff;
 }
 
 .navbar__menu .menu__link {
@@ -67,11 +103,10 @@ section {
     padding: 1em;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
 }
 
 .navbar__menu .menu__link:hover {
-    background: #333;
+    background: var(--green-2);
     color: #fff;
     transition: ease 0.3s all;
 }
@@ -90,12 +125,16 @@ section {
     background: #000;
     padding: 3em;
     color: #fff;
+    text-align: center;
 }
 
 .page__footer p{
     color: #fff;
 }
 
+.page__footer a{
+  color: inherit;
+}
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
@@ -122,10 +161,12 @@ section:nth-of-type(even) .landing__container {
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
 section.your-active-class {
     background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: rgba(0, 0, 0, 0.65);
+    box-shadow: var(--shadow-elevation-high);
+    transition: 0.3s ease;
 }
 .menu__link--active {
-    background: #444;
+    background: var(--green-1);
     color: #fff;
     transition: ease 0.3s all;
 }
