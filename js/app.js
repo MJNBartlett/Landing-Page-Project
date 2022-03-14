@@ -1,10 +1,5 @@
 /**
  *
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- *
  * Dependencies: None
  *
  * JS Version: ES2015/ES6
@@ -18,7 +13,6 @@
 */
 let navList = document.getElementById('navbar__list'); //ul container for nav items
 let allSections = document.querySelectorAll('main section'); //Node list of all sections in main
-let allSectionTitles = document.querySelectorAll('main section h2'); //Node list of all section h2 titles in main
 /**
  * End Global Variables
  *
@@ -31,7 +25,7 @@ let allSectionTitles = document.querySelectorAll('main section h2'); //Node list
  * Begin Main Functions
 */
 
-// build the nav, and add click event listeners to each link
+// Function to build the nav, and add click event listeners to each link.
 function navMenuBuilder() {
     for (let section of allSections) {
       let listItems = document.createElement('li'); //Create li element
@@ -40,7 +34,7 @@ function navMenuBuilder() {
       let sectionLink = section.getAttribute('id'); //Storing section ID for use in linking nav items
 
       listItems.className = `menu__link ${sectionLink}__anchor`; //adding styling class for nav items, and anchor class for future reference
-      listItems.innerHTML = `<a href="#${sectionLink}">${sectionTitleText}</a>`; //adding link to page sections, and text from section h2 element
+      listItems.innerHTML = `<a href="#${sectionLink}" aria-label="Go to ${sectionTitleText} on this page">${sectionTitleText}</a>`; //adding link to page sections, and text from section h2 element
 
       listItems.addEventListener('click', function clickToScroll(evt) {
         evt.preventDefault(); //Stop page refresh when clicking each link
@@ -49,10 +43,10 @@ function navMenuBuilder() {
 
       navList.appendChild(listItems); //append created li element to nav ul element
     }
-};
+}
 
-// Add class 'active' to section when near top of viewport
-function activeSectionIndic(){
+// Function to highlight active section when near top of viewport, also highlights Nav items
+function activeSectionIndic() {
     for (let section of allSections){ //allSections Node list defined in global variables
       let sectionBoundBox = section.getBoundingClientRect(); //returns DOMRect object determing each sections relative position to top of viewport
       let sectionId = section.getAttribute('id');
@@ -67,7 +61,7 @@ function activeSectionIndic(){
       }
     }
     document.addEventListener('scroll', activeSectionIndic);
-};
+}
 
 /**
  * End Main Functions
@@ -80,5 +74,5 @@ function activeSectionIndic(){
 // Build menu
 document.addEventListener('DOMContentLoaded', navMenuBuilder);
 
-// Set sections as active
+// Set sections and nav items as active
 document.addEventListener('DOMContentLoaded', activeSectionIndic); //Adds scroll event listener
