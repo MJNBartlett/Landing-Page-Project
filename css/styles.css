@@ -2,6 +2,9 @@
 :root {
   --green-1: #3C968B;
   --green-2: #1e4c47;
+  --green-3:#35847b;
+  --dark-text: #000;
+  --light-text: #fff;
   --shadow-color: 173deg 48% 28%;
   --shadow-elevation-medium:
     0px -0.3px 0.4px hsl(var(--shadow-color) / 0.22),
@@ -164,6 +167,60 @@ section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
     text-align: right;
+}
+
+.button-scroll{
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 25px;
+  text-align: left;
+  padding-left: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--green-1);
+  border: 2px solid var(--dark-text);
+  cursor: pointer;
+  color: var(--dark-text);
+}
+
+.button-scroll:focus{
+  outline: none;
+}
+
+.button-scroll:hover{
+  box-shadow: 0 -4px 5px -1px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+}
+
+.button-scroll:active{
+  background: var(--green-3);
+  box-shadow: none;
+}
+
+.button__svg{
+  width: 30px;
+  position: absolute;
+  right: 8px;
+  bottom: 3.5px;
+  fill: var(--dark-text);
+}
+
+.button__svg-box{
+  fill: none;
+}
+
+.rotate-0{
+  transform: rotate(0deg);
+  transition: 0.3s ease;
+}
+
+.rotate-180{
+  transform: rotate(180deg);
+  transition: 0.3s ease;
 }
 
 /* ---- Theme State Rules ---- */
